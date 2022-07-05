@@ -46,7 +46,7 @@
    :wrap wrap-oauth2})
 
 (def auth-routes
-  "These routes get handled by [[ring.middleware.oauth2]] "
+  "These routes get handled by [[ring.middleware.oauth2]]."
   ["/oauth2"
    ["/google" {:get (constantly  nil)}]
    ["/google/callback" {:get (constantly  nil)}]])
@@ -66,16 +66,14 @@
   home
   [_req]
   {:status 200
-   :headers {"Content-Type" "text/plain"}
+   :headers {"Content-Type" "text/html"}
    :body "home"})
 
 (def app
   (ring/ring-handler
    (ring/router
     [["/" home]
-     ["/api"
-      ["/ping" handler]
-      ["/pong" handler]]
+     ["/api" ["/ping" handler]]
      auth-routes]
     {:data
      {:middleware
@@ -129,12 +127,13 @@
   (require '[clojure.tools.deps.alpha.repl :refer [add-libs]])
   (add-libs
    '{com.github.jpmonettas/flow-storm-dbg {:mvn/version "2.2.99"}
-     com.github.jpmonettas/flow-storm-inst {:mvn/version "2.2.99"}})
+     com.github.jpmonettas/flow-storm-inst {:mvn/version "2.2.99"}
+
+        hiccup/hiccup {:mvn/version "2.0.0-alpha2"}
+
+     })
 
   (require '[flow-storm.api :as fs-api])
   (fs-api/local-connect)
-  (fs-api/instrument-forms-for-namespaces #{"ring.middleware.session"})
-
-
 
   )
