@@ -10,5 +10,5 @@
         ring-oauth2/ring-oauth2 {:mvn/version "0.2.0"}
         hiccup/hiccup {:mvn/version "2.0.0-alpha2"}
         radicalzephyr/ring.middleware.logger {:mvn/version "0.6.0"}
-        ch.qos.logback/logback-classic
-        {:mvn/version "1.2.8"}}}
+        buddy/buddy-auth {:mvn/version "3.0.323"}
+        ch.qos.logback/logback-classic {:mvn/version "1.4.4"}}}
